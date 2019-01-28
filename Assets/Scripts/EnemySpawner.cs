@@ -11,14 +11,44 @@ public class EnemySpawner : MonoBehaviour
     public int spawnsThisWave;
     public int wavesThisGame;
 
+    bool IsWaveCompleted = false;
+
+    bool IsWaveSpawningComplete = false;
+    //Variable initialization and spawn rate normalization;
     private void Awake()
     {
         NormalizeSpawnChances();
     }
+    //Starts round spawning
     private void Start()
     {
-        StartCoroutine(SpawnsPerWave());
+        StartCoroutine(NumberOfWaves());
     }
+    //Next wave command
+    private bool CheckForNextWave()
+    {
+        int numberOfSpawns = transform.childCount;
+        
+        if(numberOfSpawns > 0)
+        {
+            for (int i = 0; i < numberOfSpawns; i++)
+            {
+                Debug.Log("Checking: " + i);
+                var child = transform.GetChild(i);
+
+                if (child.gameObject.activeInHierarchy)
+                {
+                    Debug.Log("Found: " + i);
+                    //Found 1 active enemy can't go to the next wave
+                    return false;
+                }
+            }
+            //Can go to the next wave
+            return true;
+        }
+        return false;
+    }
+    //Spawn rate normalization method
     void NormalizeSpawnChances()
     {
         float spawnChanceSum = 0.0f;
@@ -33,10 +63,10 @@ public class EnemySpawner : MonoBehaviour
             enemySpawn.spawnChance /= spawnChanceSum;
         }
     }
-
+    //Spawn Enemy Method
     void Spawn()
     {
-        float rando = Random.value;
+        float rando = UnityEngine.Random.value;
 
         for (int i = 0; i < enemySpawns.Length; i++)
         {
@@ -51,25 +81,30 @@ public class EnemySpawner : MonoBehaviour
 
             if (rando < currPer)
             {
-                Instantiate(enemySpawns[i].EnemyPreFab,
+                var spawned = Instantiate(enemySpawns[i].EnemyPreFab,
                     new Vector3(
                         transform.position.x,
-                        Random.Range(BottomBoundingBox.transform.position.y, TopBoundingBox.transform.position.y),
+                        UnityEngine.Random.Range(BottomBoundingBox.transform.position.y, TopBoundingBox.transform.position.y),
                         transform.position.z), Quaternion.identity);
+
+                spawned.transform.parent = gameObject.transform;
                 return;
             }
         }
     }
-
+    //Coroutine for number of spawn waves
     IEnumerator NumberOfWaves()
     {
-        yield return new WaitForSeconds(1.0f);
 
         for (int i = 0; i < wavesThisGame; i++)
         {
-            //SpawnsPerWave(10);
+            IsWaveCompleted = false;
+            StartCoroutine(SpawnsPerWave());
+            yield return new WaitUntil(() => CheckForNextWave());
+            Debug.Log("Next Wave");
         }
     }
+    //Coroutine for number os spawned enemies per wave
     IEnumerator SpawnsPerWave()
     {
         for (int i = 0; i < spawnsThisWave + 1; i++)
@@ -77,5 +112,6 @@ public class EnemySpawner : MonoBehaviour
             Spawn();
             yield return new WaitForSeconds(1.0f);
         }
+        IsWaveSpawningComplete = true;
     }
 }

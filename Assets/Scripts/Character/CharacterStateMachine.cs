@@ -19,7 +19,7 @@ public class CharacterStateMachine : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        Debug.Log("Current State for " + gameObject.name + " is: " + state);
+        //Debug.Log("Current State for " + gameObject.name + " is: " + state);
         CheckHealth();
         switch(state)
         {
