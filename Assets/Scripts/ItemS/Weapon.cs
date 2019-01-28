@@ -20,8 +20,7 @@ public class Weapon : Item
 
         act.GetSendNewWeapon(gameObject);
     }
-
-    private void Start()
+    private void OnValidate()
     {
         bulletType = weaponData.bulletType;
         bulletDamage = weaponData.bulletDamage;

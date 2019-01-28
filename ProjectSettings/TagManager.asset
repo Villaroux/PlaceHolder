@@ -44,3 +44,15 @@ TagManager:
   - name: Cursor
     uniqueID: 1240004177
     locked: 0
+  - name: HUD
+    uniqueID: 164283395
+    locked: 0
+  - name: BG
+    uniqueID: 2942392351
+    locked: 0
+  - name: Playable
+    uniqueID: 1411054293
+    locked: 0
+  - name: Foreground
+    uniqueID: 3247309379
+    locked: 0

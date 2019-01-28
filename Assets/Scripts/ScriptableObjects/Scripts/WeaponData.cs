@@ -3,6 +3,7 @@
 [CreateAssetMenu(fileName = "WeaponData")]
 public class WeaponData : ScriptableObject
 {
+    public int weaponlevel;
     public float bulletDamage;
     [Tooltip("Bullets per minute : example 700 bpm")]
     public float firingRate;
