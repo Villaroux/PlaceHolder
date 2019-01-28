@@ -3,7 +3,7 @@
 public class DisableAfterSeconds : MonoBehaviour
 {
     [SerializeField]
-    float destroyAfterXSeconds;
+    float destroyAfterXSeconds=0.5f;
     float timer;
 
     private void OnEnable()

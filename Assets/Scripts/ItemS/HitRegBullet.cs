@@ -3,7 +3,7 @@
 public class HitRegBullet : Bullet
 {
     [SerializeField]
-    float bulletRadius;
+    float bulletRadius=0.1f;
     KeyTarget key;
     BodyTarget bod;
     private void Start()

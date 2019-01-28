@@ -34,6 +34,11 @@ public class SimpleCharacterControl : MonoBehaviour {
     private bool m_isGrounded;
     private List<Collider> m_collisions = new List<Collider>();
 
+    private void Awake()
+    {
+        m_rigidBody = GetComponent<Rigidbody>();
+        m_animator = GetComponent<Animator>();
+    }
     private void OnCollisionEnter(Collision collision)
     {
         ContactPoint[] contactPoints = collision.contacts;

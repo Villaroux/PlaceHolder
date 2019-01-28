@@ -10,6 +10,7 @@ public class Demo : MonoBehaviour {
     private void Start()
     {
         m_animators = FindObjectsOfType<Animator>();
+        m_cameraLogic = GetComponent<CameraLogic>();
     }
 
     private void Update()
