@@ -3,11 +3,19 @@ using UnityEngine.EventSystems;
 
 public class ItemSlot : MonoBehaviour, ISubmitHandler
 {
-    public Item item;
+    [SerializeField]
+    Item item;
 
+    public void OnValidate()
+    {
+        item = GetComponentInChildren<Item>();
+    }
     public void OnSubmit(BaseEventData eventData)
     {
-        item.SelectItem();
+        if(item != null)
+        {
+            item.SelectItem();
+        }
     }
     
 }
