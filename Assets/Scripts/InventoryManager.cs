@@ -94,12 +94,14 @@ public class InventoryManager : MonoBehaviour
         Item item = draggedFromSlot.Item;
         //Swap items with droppedItemSlot
         draggedFromSlot.Item = droppedItemSlot.Item;
+        //Check to see if droppedItemSlot has an item to reparent
         if(droppedItemSlot.Item != null)
         {
             droppedItemSlot.Item.transform.parent = draggedFromSlot.transform;
         }
         //Swap items with temporary item
         droppedItemSlot.Item = item;
+        //Reparent Item location
         item.transform.parent = droppedItemSlot.transform;
     }
 }
