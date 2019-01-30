@@ -12,6 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2b2e3d60c5248e445af4e166fe28db1e, type: 3}
   m_Name: Beretta M9
   m_EditorClassIdentifier: 
+  weaponlevel: 0
   bulletDamage: 15
   firingRate: 150
   chargeRate: 0
@@ -20,5 +21,5 @@ MonoBehaviour:
   burstVolley: 0
   maxAmmo: 15
   bulletType: {fileID: 6622340304954624586, guid: 59c9c7dfd99754846b67586632247aa1, type: 3}
-  weaponSprite: {fileID: 21300004, guid: 03dd1ef6fb163214c9e1ac0242dab3ba, type: 3}
+  weaponSprite: {fileID: 21300036, guid: 03dd1ef6fb163214c9e1ac0242dab3ba, type: 3}
   firingMode: 2

@@ -1,6 +1,7 @@
 ﻿using UnityEngine;
 public class Weapon : Item
 {
+    public Sprite weaponIcon;
     public WeaponData weaponData;
     public WeaponFiringMode.FiringMode fireMode;
     public GameObject bulletType;
@@ -22,6 +23,22 @@ public class Weapon : Item
     }
     private void OnValidate()
     {
+        itemIcon = weaponData.weaponSprite;
+        bulletType = weaponData.bulletType;
+        bulletDamage = weaponData.bulletDamage;
+        fireMode = weaponData.firingMode;
+        fireRate = weaponData.firingRate;
+        reloadDuration = weaponData.reloadDuration;
+        maxAmmo = weaponData.maxAmmo;
+        currAmmo = weaponData.maxAmmo;
+        burstVolley = weaponData.burstVolley;
+        burstRate = weaponData.burstRate;
+        chargeRate = weaponData.chargeRate;
+    }
+    private void Start()
+    {
+
+        itemIcon = weaponData.weaponSprite;
         bulletType = weaponData.bulletType;
         bulletDamage = weaponData.bulletDamage;
         fireMode = weaponData.firingMode;
