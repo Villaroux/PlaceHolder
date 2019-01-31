@@ -5,8 +5,10 @@ public class EnemySpawner : MonoBehaviour
 {
     public EnemySpawn[] enemySpawns;
 
-    public GameObject TopBoundingBox;
-    public GameObject BottomBoundingBox;
+    public GameObject TopGroundBoundingBox;
+    public GameObject BottomGroundBoundingBox;
+    public GameObject TopAerialBoundingBox;
+    public GameObject BottomAerialBoundingBox;
 
     public int spawnsThisWave;
     public int wavesThisGame;
@@ -84,7 +86,7 @@ public class EnemySpawner : MonoBehaviour
                 var spawned = Instantiate(enemySpawns[i].EnemyPreFab,
                     new Vector3(
                         transform.position.x,
-                        UnityEngine.Random.Range(BottomBoundingBox.transform.position.y, TopBoundingBox.transform.position.y),
+                        UnityEngine.Random.Range(BottomGroundBoundingBox.transform.position.y, TopGroundBoundingBox.transform.position.y),
                         transform.position.z), Quaternion.identity);
 
                 spawned.transform.parent = gameObject.transform;
