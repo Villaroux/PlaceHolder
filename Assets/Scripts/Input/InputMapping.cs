@@ -5,6 +5,8 @@ public class InputMapping : MonoBehaviour
     public string horizontal;
     public string vertical;
     public string mouseLeftRight;
+    [SerializeField]
+    KeyCode InventoryKey;
     public InputMap inputMap;
     public enum InputMap
     {
@@ -12,9 +14,10 @@ public class InputMapping : MonoBehaviour
         Menu
     }
 
-
-    public Player player;
-
+    [SerializeField]
+    Player player;
+    [SerializeField]
+    GameObject inventoryHUD;
     private void Update()
     {
         switch (inputMap)
@@ -38,7 +41,7 @@ public class InputMapping : MonoBehaviour
         inputs.z = Input.GetAxisRaw("Fire1");
 
         player.ReceiveInputs(inputs);
-
+        if (Input.GetKeyDown(InventoryKey)) inventoryHUD.SetActive(!inventoryHUD.activeInHierarchy);
         //Debug.Log(inputs);
     }
     void MenuInputs()
