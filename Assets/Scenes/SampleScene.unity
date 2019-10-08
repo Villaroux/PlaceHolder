@@ -3525,8 +3525,10 @@ MonoBehaviour:
   - {fileID: 11400000, guid: 1774cdb97841a2840bd70f4c3e0e8568, type: 2}
   - {fileID: 11400000, guid: 62a2dcfe100dd9049a0e5630b725972c, type: 2}
   - {fileID: 11400000, guid: d4a67e4178376ca4490c70b916d7d9e7, type: 2}
-  TopBoundingBox: {fileID: 1390485890}
-  BottomBoundingBox: {fileID: 2056532992}
+  TopGroundBoundingBox: {fileID: 1390485890}
+  BottomGroundBoundingBox: {fileID: 2056532992}
+  TopAerialBoundingBox: {fileID: 0}
+  BottomAerialBoundingBox: {fileID: 0}
   spawnsThisWave: 5
   wavesThisGame: 2
 --- !u!1 &1339508468
